@@ -1,5 +1,3 @@
-namePrefix: kustomize-
-
 resources:
   - wordpress-app-namespace.yaml
   - wordpress-db-secret.yaml
