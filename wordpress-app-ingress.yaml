@@ -1,13 +1,24 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: external-dns-viewer
-  namespace: external-dns
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: external-dns
-subjects:
-- kind: ServiceAccount
-  name: external-dns
-  namespace: external-dns
+  name: wordpress-ingress
+  namespace: wordpress
+  annotations:
+  ⦙ #cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  ingressClassName: nginx
+  #tls:
+  #- hosts:
+  #  - wordpress-ccc-poc.centric.eu
+  #  secretName: tls-wordpress
+  rules:
+  ⦙ - host: argocd-ccc-poc.centric.eu
+  ⦙ ⦙ http:
+  ⦙ ⦙ ⦙ paths:
+  ⦙ ⦙ ⦙ ⦙ - path: /
+  ⦙ ⦙ ⦙ ⦙ ⦙ pathType: Prefix
+  ⦙ ⦙ ⦙ ⦙ ⦙ backend:
+  ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ service:
+  ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ name: wordpress-service
+  ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ port:
+  ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ ⦙ number: 80
