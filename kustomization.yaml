@@ -2,6 +2,7 @@ namePrefix: kustomize-
 
 resources:
   - wordpress-app-namespace.yaml
+  - wordpress-db-secret.yaml
   - wordpress-app-persistentvolumeclaim.yaml
   - wordpress-app-deployment.yaml
   - wordpress-app-service.yaml
