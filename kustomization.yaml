@@ -1,0 +1,10 @@
+namePrefix: kustomize-
+
+resources:
+  - wordpress-app-namespace.yaml
+  - wordpress-app-persistentvolumeclaim.yaml
+  - wordpress-app-deployment.yaml
+  - wordpress-app-service.yaml
+  - wordpress-app-ingress.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
