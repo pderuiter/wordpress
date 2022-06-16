@@ -12,7 +12,7 @@ spec:
   #  - wordpress-ccc-poc.centric.eu
   #  secretName: tls-wordpress
   rules:
-    - host: argocd-ccc-poc.centric.eu
+    - host: wordpress-ccc-poc.centric.eu
       http:
         paths:
           - path: /
